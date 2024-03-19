@@ -147,6 +147,15 @@
                     <div class="row">
                         <div class="text-center fh5co-heading animate-box">
                             <h2>Feedback</h2>
+                            <c:set var="totalStars" value="0" />
+                            <c:set var="feedbackCount" value="0" />
+                            <c:forEach items="${rs}" var="f">
+                                <c:set var="totalStars" value="${totalStars + f.getStar()}" />
+                                <c:set var="feedbackCount" value="${feedbackCount + 1}" />
+                            </c:forEach>
+                            <c:if test="${feedbackCount > 0}">
+                                <h2>Average Star Rating: ${totalStars / feedbackCount}</h2>
+                            </c:if>
                         </div>
                     </div>
 
