@@ -80,6 +80,26 @@
         <servlet-name>manageaccount</servlet-name>
         <servlet-class>controller.manageaccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>loadaccount</servlet-name>
+        <servlet-class>controller.loadaccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateaccount</servlet-name>
+        <servlet-class>controller.updateaccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteaccount</servlet-name>
+        <servlet-class>controller.deleteaccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>feedback</servlet-name>
+        <servlet-class>controller.feedback</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>managefeedback</servlet-name>
+        <servlet-class>controller.managefeedback</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>home</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -159,5 +179,25 @@
     <servlet-mapping>
         <servlet-name>manageaccount</servlet-name>
         <url-pattern>/manageaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loadaccount</servlet-name>
+        <url-pattern>/loadaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateaccount</servlet-name>
+        <url-pattern>/updateaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteaccount</servlet-name>
+        <url-pattern>/deleteaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>feedback</servlet-name>
+        <url-pattern>/feedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>managefeedback</servlet-name>
+        <url-pattern>/managefeedback</url-pattern>
     </servlet-mapping>
 </web-app>

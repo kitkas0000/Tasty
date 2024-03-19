@@ -78,6 +78,12 @@
                                     </li>
                                 </c:if>
 
+                                <c:if test="${sessionScope.acc.isAdmin == 1}">
+                                    <li>
+                                        <a href="managefeedback">Manage Feedback</a>
+                                    </li>
+                                </c:if>
+
                                 <c:if test="${sessionScope.acc.isUser == 1}">
                                     <li class="active">
                                         <a href="managereservation">Your Reservation</a>
@@ -92,7 +98,7 @@
 
                                 <c:if test="${sessionScope.acc.isUser == 1}">
                                     <li>
-                                        <a href="account">Account</a>
+                                        <a href="manageaccount">Account</a>
                                     </li>
                                 </c:if>
 
@@ -122,7 +128,7 @@
                         <div class="col-md-12 text-center">
                             <div class="display-t js-fullheight">
                                 <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-                                    <h1>Manage</h1>
+                                    <h1>Reservation</h1>
                                 </div>
                             </div>
                         </div>

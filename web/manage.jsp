@@ -54,9 +54,7 @@
                         </div>
                         <div class="col-xs-12 text-center menu-1 menu-wrap">
                             <ul>
-                                <li>
-                                    <a href="home">Home</a>
-                                </li>
+                                <li><a href="home">Home</a></li>
                                 <li>
                                     <a href="menu">Menu</a>
                                 </li>
@@ -80,6 +78,12 @@
                                     </li>
                                 </c:if>
 
+                                <c:if test="${sessionScope.acc.isAdmin == 1}">
+                                    <li>
+                                        <a href="managefeedback">Manage Feedback</a>
+                                    </li>
+                                </c:if>
+
                                 <c:if test="${sessionScope.acc.isUser == 1}">
                                     <li>
                                         <a href="managereservation">Your Reservation</a>
@@ -88,7 +92,13 @@
 
                                 <c:if test="${sessionScope.acc.isUser == 1}">
                                     <li>
-                                        <a href="account">account</a>
+                                        <a href="feedback">Feedback</a>
+                                    </li>
+                                </c:if>
+
+                                <c:if test="${sessionScope.acc.isUser == 1}">
+                                    <li>
+                                        <a href="manageaccount">Account</a>
                                     </li>
                                 </c:if>
 

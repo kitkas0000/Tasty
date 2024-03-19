@@ -78,6 +78,12 @@
                                     </li>
                                 </c:if>
 
+                                <c:if test="${sessionScope.acc.isAdmin == 1}">
+                                    <li>
+                                        <a href="managefeedback">Manage Feedback</a>
+                                    </li>
+                                </c:if>
+
                                 <c:if test="${sessionScope.acc.isUser == 1}">
                                     <li>
                                         <a href="managereservation">Your Reservation</a>
@@ -152,8 +158,8 @@
                                         <label for="many">Phone: ${a.getPhonenumber()}</label>
                                     </div>
                                     <div class="col-md-12">
-                                        <a href="#" class="btn btn-primary btn-outline">Update</a>
-                                        <a href="#" class="btn btn-primary btn-outline">Delete</a>
+                                        <a href="loadaccount?aid=${a.getUid()}" class="btn btn-primary btn-outline">Update</a>
+                                        <a href="deleteaccount?aid=${a.getUid()}" class="btn btn-primary btn-outline">Delete</a>
                                     </div>
                                 </div>
                             </form>

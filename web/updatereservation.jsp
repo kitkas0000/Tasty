@@ -55,12 +55,64 @@
                         <div class="col-xs-12 text-center menu-1 menu-wrap">
                             <ul>
                                 <li><a href="home">Home</a></li>
-                                <li><a href="menu">Menu</a></li>
-                                <li><a href="gallery">Gallery</a></li>
-                                <li><a href="reservation">Reservation</a></li>
-                                <li><a href="about">About</a></li>
-                                <li><a href="contact">Contact</a></li>
-                                <li class="active"><a href="manage">Manage</a></li>
+                                <li>
+                                    <a href="menu">Menu</a>
+                                </li>
+                                <li>
+                                    <a href="gallery">Gallery</a>
+                                </li>
+                                <c:if test="${sessionScope.acc.isUser == 1}">
+                                    <li>
+                                        <a href="reservation">Reservation</a>
+                                    </li>
+                                </c:if>
+                                <li>
+                                    <a href="about">About</a>
+                                </li>
+                                <li>
+                                    <a href="contact">Contact</a>
+                                </li>
+                                <c:if test="${sessionScope.acc.isAdmin == 1}">
+                                    <li>
+                                        <a href="manage">Manage Product</a>
+                                    </li>
+                                </c:if>
+
+                                <c:if test="${sessionScope.acc.isAdmin == 1}">
+                                    <li>
+                                        <a href="managefeedback">Manage Feedback</a>
+                                    </li>
+                                </c:if>
+
+                                <c:if test="${sessionScope.acc.isUser == 1}">
+                                    <li class="active">
+                                        <a href="managereservation">Your Reservation</a>
+                                    </li>
+                                </c:if>
+
+                                <c:if test="${sessionScope.acc.isUser == 1}">
+                                    <li>
+                                        <a href="feedback">Feedback</a>
+                                    </li>
+                                </c:if>
+
+                                <c:if test="${sessionScope.acc.isUser == 1}">
+                                    <li>
+                                        <a href="manageaccount">Account</a>
+                                    </li>
+                                </c:if>
+
+                                <c:if test="${sessionScope.acc != null}">
+                                    <li>
+                                        <a href="logout">Logout</a>
+                                    </li>
+                                </c:if>
+
+                                <c:if test="${sessionScope.acc == null}">
+                                    <li>
+                                        <a href="login">Login</a>
+                                    </li>
+                                </c:if>
                             </ul>
                         </div>
                     </div>
@@ -76,7 +128,7 @@
                         <div class="col-md-12 text-center">
                             <div class="display-t js-fullheight">
                                 <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-                                    <h1>Manage</h1>
+                                    <h1>Reservation</h1>
                                 </div>
                             </div>
                         </div>

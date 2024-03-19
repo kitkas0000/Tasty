@@ -26,11 +26,8 @@
         <link rel="stylesheet" href="css/icomoon.css">
         <!-- Bootstrap  -->
         <link rel="stylesheet" href="css/bootstrap.css">
-
         <!-- Flexslider  -->
         <link rel="stylesheet" href="css/flexslider.css">
-        <!-- Date Time -->
-        <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
 
         <!-- Theme style  -->
         <link rel="stylesheet" href="css/style.css">
@@ -65,7 +62,7 @@
                                     <a href="gallery">Gallery</a>
                                 </li>
                                 <c:if test="${sessionScope.acc.isUser == 1}">
-                                    <li class="active">
+                                    <li>
                                         <a href="reservation">Reservation</a>
                                     </li>
                                 </c:if>
@@ -81,12 +78,6 @@
                                     </li>
                                 </c:if>
 
-                                <c:if test="${sessionScope.acc.isAdmin == 1}">
-                                    <li>
-                                        <a href="managefeedback">Manage Feedback</a>
-                                    </li>
-                                </c:if>
-
                                 <c:if test="${sessionScope.acc.isUser == 1}">
                                     <li>
                                         <a href="managereservation">Your Reservation</a>
@@ -94,7 +85,7 @@
                                 </c:if>
 
                                 <c:if test="${sessionScope.acc.isUser == 1}">
-                                    <li>
+                                    <li class="active">
                                         <a href="feedback">Feedback</a>
                                     </li>
                                 </c:if>
@@ -131,7 +122,7 @@
                         <div class="col-md-12 text-center">
                             <div class="display-t js-fullheight">
                                 <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-                                    <h1>Reserved a Table Today!</h1>
+                                    <h1>Give us a feedback</h1>
                                 </div>
                             </div>
                         </div>
@@ -139,93 +130,47 @@
                 </div>
             </header>
 
-
-            <div id="fh5co-reservation-form" class="fh5co-section">
+            <div id="fh5co-featured-menu" class="fh5co-section">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 fh5co-heading animate-box">
-                            <h2>Reservation</h2>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ab debitis sit itaque totam, a maiores nihil, nulla magnam porro minima officiis! Doloribus aliquam voluptates corporis et tempora consequuntur ipsam, itaque, nesciunt similique commodi omnis. Ad magni perspiciatis, voluptatum repellat.</p>
-                                </div>
-                            </div>
+                        <div class="text-center fh5co-heading animate-box">
+                            <h2>Feedback Form</h2>
                         </div>
+                    </div>
 
-                        <div class="col-md-6 col-md-push-6 col-sm-6 col-sm-push-6">
-                            <% 
+                    <div class="col-md-6 col-md-push-3 col-sm-6 col-sm-push-3">
+                        <% 
                                     String mess = "";
                                     if(request.getAttribute("mess") != null){
                                         mess = (String) request.getAttribute("mess");
                                     }
-                            %>
-                            <form action="reservation" id="form-wrap" method="post">
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label for="many">Name</label>
-                                        <input type="text" name="name" class="form-control" id="name">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label for="many">People Amount</label>
-                                        <input type="text" name="people" class="form-control" id="people">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label for="taskdatetime">When</label>
-                                        <input type="text" name="date" id="taskdatetime" class="form-control"/>
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <input type="submit" class="btn btn-primary btn-outline btn-lg" value="Book Now">
-                                    </div>
-                                </div>
-                                <p><%= mess %></p>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="fh5co-featured-testimony" class="fh5co-section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 fh5co-heading animate-box">
-                            <h2>Testimony</h2>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ab debitis sit itaque totam, a maiores nihil, nulla magnam porro minima officiis! Doloribus aliquam voluptates corporis et tempora consequuntur ipsam, itaque, nesciunt similique commodi omnis.</p>
+                        %>
+                        <form action="feedback" id="form-wrap" method="post">
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label>Name</label>
+                                    <input type="text" name="name" class="form-control">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-md-5 animate-box img-to-responsive animate-box" data-animate-effect="fadeInLeft">
-                            <img src="images/person_1.jpg" alt="">
-                        </div>
-                        <div class="col-md-7 animate-box" data-animate-effect="fadeInRight">
-                            <blockquote>
-                                <p> &ldquo; Quantum ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ab debitis sit itaque totam, a maiores nihil, nulla magnam porro minima officiis! Doloribus aliquam voluptates corporis et tempora consequuntur ipsam. &rdquo;</p>
-                                <p class="author"><cite>&mdash; Jane Smith</cite></p>
-                            </blockquote>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div id="fh5co-started" class="fh5co-section animate-box" style="background-image: url(images/hero_1.jpeg);" data-stellar-background-ratio="0.5">
-                <div class="overlay"></div>
-                <div class="container">
-                    <div class="row animate-box">
-                        <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-                            <h2>Book a Table</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae enim quae vitae cupiditate, sequi quam ea id dolor reiciendis consectetur repudiandae. Rem quam, repellendus veniam ipsa fuga maxime odio? Eaque!</p>
-                            <p><a href="reservation" class="btn btn-primary btn-outline">Book Now</a></p>
-                        </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label>Feedback</label>
+                                    <input type="text" name="feedback" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label>Rate us from 1 to 5</label>
+                                    <input type="text" name="star" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <input type="submit" class="btn btn-primary btn-outline btn-lg" value="Submit">
+                                </div>
+                            </div>
+                            <p><%= mess %></p>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -241,9 +186,9 @@
                             <h4>Links</h4>
                             <ul class="fh5co-footer-links">
                                 <li><a href="#">Home</a></li>
+                                <li><a href="#">Portfolio</a></li>
+                                <li><a href="#">Blog</a></li>
                                 <li><a href="#">About</a></li>
-                                <li><a href="#">Menu</a></li>
-                                <li><a href="#">Gallery</a></li>
                             </ul>
                         </div>
 
@@ -291,12 +236,6 @@
         <script src="js/jquery.stellar.min.js"></script>
         <!-- Flexslider -->
         <script src="js/jquery.flexslider-min.js"></script>
-
-        <!-- Date Time -->
-        <script src="js/moment.min.js"></script>
-        <script src="js/bootstrap-datetimepicker.js"></script>
-
-
         <!-- Main -->
         <script src="js/main.js"></script>
 

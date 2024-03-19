@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Account;
+import model.Feedback;
 import model.Product;
 import model.Reservation;
 
@@ -272,6 +273,34 @@ public class DBContext {
 
     }
 
+    public void updateAccount(String email, String password, String name, String phone, String aid) throws SQLException {
+        String sql = "UPDATE Account\n"
+                + "SET email = ?, password = ?, name = ?, phonenumber = ?\n"
+                + "WHERE uid = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, email);
+        statement.setString(2, password);
+        statement.setString(3, name);
+        statement.setString(4, phone);
+        statement.setString(5, aid);
+
+        statement.executeUpdate();
+    }
+
+    public void deleteAccount(String aid) {
+        try {
+            String sql = "DELETE FROM Account\n"
+                    + "WHERE uid = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, aid);
+
+            statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public Account login(String email, String password) {
         try {
             String sql = "SELECT * FROM Account a\n"
@@ -307,9 +336,50 @@ public class DBContext {
         return null;
     }
 
+    public ArrayList<Feedback> getListFeedback() {
+        try {
+            ArrayList<Feedback> ListFeedback = new ArrayList<Feedback>();
+            String sql = "SELECT * FROM Feedback f\n"
+                    + "WHERE MONTH(f.date) = MONTH(GETDATE()) AND YEAR(f.date) = YEAR(GETDATE())";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
+                String feedback = rs.getString(3);
+                int star = rs.getInt(4);
+                String date = rs.getString(5);
+                int uid = rs.getInt(6);
+
+                Feedback f = new Feedback(id, name, feedback, star, date, uid);
+
+                ListFeedback.add(f);
+
+            }
+            return ListFeedback;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+
+    }
+
+    public void addFeedback(String name, String feedback, String star, int uid) throws SQLException {
+        String sql = "INSERT INTO Feedback(name, feedback, star, date, uid) VALUES (?, ?, ?, GETDATE(), ?)";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, name);
+        statement.setString(2, feedback);
+        statement.setString(3, star);
+        statement.setInt(4, uid);
+
+        statement.executeUpdate();
+
+    }
+
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         DBContext db = new DBContext();
-        System.out.println(db);
+        System.out.println(db.getListFeedback());
 
     }
 }
