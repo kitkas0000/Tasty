@@ -73,13 +73,13 @@
                                     <a href="contact">Contact</a>
                                 </li>
                                 <c:if test="${sessionScope.acc.isAdmin == 1}">
-                                    <li class="active">
+                                    <li>
                                         <a href="manage">Manage Product</a>
                                     </li>
                                 </c:if>
 
                                 <c:if test="${sessionScope.acc.isAdmin == 1}">
-                                    <li>
+                                    <li class="active">
                                         <a href="manageallreservation">Manage Reservation</a>
                                     </li>
                                 </c:if>
@@ -134,7 +134,7 @@
                         <div class="col-md-12 text-center">
                             <div class="display-t js-fullheight">
                                 <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-                                    <h1>Manage</h1>
+                                    <h1>Reservation</h1>
                                 </div>
                             </div>
                         </div>
@@ -146,64 +146,33 @@
                 <div class="container">
                     <div class="row">
                         <div class="text-center fh5co-heading animate-box">
-                            <h2>Update Product</h2>
+                            <h2>All Reservation</h2>
                         </div>
                     </div>
 
                     <div class="col-md-6 col-md-push-3 col-sm-6 col-sm-push-3">
-                        <% 
-                                    String mess = "";
-                                    if(request.getAttribute("mess") != null){
-                                        mess = (String) request.getAttribute("mess");
-                                    }
-                        %>
-                        <c:forEach items="${rs}" var="p">
-                            <form action="update" id="form-wrap" method="post">
-                                <div class="row form-group">
+                        <form action="managereservation" id="form-wrap" method="post">
+                            <div class="row form-group">
+                                <c:forEach items="${rs}" var="r">
                                     <div class="col-md-12">
-                                        <label>ID</label>
-                                        <input value="${p.getId()}" type="text" name="id" class="form-control" id="name" readonly>
+                                        <label for="many">ID: ${r.getId()}</label>
                                     </div>
-                                </div>
-                                <div class="row form-group">
                                     <div class="col-md-12">
-                                        <label>Product Name</label>
-                                        <input value="${p.getName()}" type="text" name="name" class="form-control" id="name">
+                                        <label for="many">Name: ${r.getName()}</label>
                                     </div>
-                                </div>
-                                <div class="row form-group">
                                     <div class="col-md-12">
-                                        <label>Image Link</label>
-                                        <input value="${p.getImages()}" type="text" name="image" class="form-control" id="people">
+                                        <label for="many">People Amount: ${r.getNumberofpeople()}</label>
                                     </div>
-                                </div>
-                                <div class="row form-group">
                                     <div class="col-md-12">
-                                        <label>Price</label>
-                                        <input value="${p.getPrice()}" type="text" name="price" class="form-control"/>
+                                        <label for="many">Date: ${r.getDate()}</label>
                                     </div>
-                                </div>
-                                <div class="row form-group">
                                     <div class="col-md-12">
-                                        <label>Title</label>
-                                        <input value="${p.getTitle()}" type="text" name="title" class="form-control"/>
+                                        <a href="loadreservation?rid=${r.getId()}" class="btn btn-primary btn-outline">Update</a>
+                                        <a href="deletereservation?rid=${r.getId()}" class="btn btn-primary btn-outline">Delete</a>
                                     </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label for="taskdatetime">Description</label>
-                                        <textarea type="textarea" name="description" class="form-control">${p.getDescription()}</textarea>
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <input type="submit" class="btn btn-primary btn-outline btn-lg" value="Update">
-                                    </div>
-                                </div>
-                                <%= mess %>
-                            </form>
-                        </c:forEach>
-
+                                </c:forEach>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

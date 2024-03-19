@@ -192,6 +192,34 @@ public class DBContext {
 
     }
 
+    public ArrayList<Reservation> getListReservationThisWeek() {
+        try {
+            ArrayList<Reservation> ListReservationThisWeek = new ArrayList<Reservation>();
+            String sql = "SELECT * FROM Reservation r\n"
+                    + "WHERE DATEPART(week, r.date) = DATEPART(week, GETDATE())";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
+                int numberofpeople = rs.getInt(3);
+                String date = rs.getString(4);
+                int uid = rs.getInt(5);
+                
+                Reservation r = new Reservation(id, name, numberofpeople, date, uid);
+
+                ListReservationThisWeek.add(r);
+
+            }
+            return ListReservationThisWeek;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+
+    }
+
     public void addReservation(String name, int numberofpeople, String date, int uid) throws SQLException {
         String sql = "INSERT INTO Reservation(name, numberofpeople, date, uid) VALUES (?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -379,7 +407,7 @@ public class DBContext {
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         DBContext db = new DBContext();
-        System.out.println(db.getListFeedback());
+        System.out.println(db.getListReservationThisWeek());
 
     }
 }

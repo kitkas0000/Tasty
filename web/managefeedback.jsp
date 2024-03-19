@@ -79,13 +79,19 @@
                                 </c:if>
 
                                 <c:if test="${sessionScope.acc.isAdmin == 1}">
+                                    <li>
+                                        <a href="manageallreservation">Manage Reservation</a>
+                                    </li>
+                                </c:if>
+
+                                <c:if test="${sessionScope.acc.isAdmin == 1}">
                                     <li class="active">
                                         <a href="managefeedback">Manage Feedback</a>
                                     </li>
                                 </c:if>
 
                                 <c:if test="${sessionScope.acc.isUser == 1}">
-                                    <li>
+                                    <li class="active">
                                         <a href="managereservation">Your Reservation</a>
                                     </li>
                                 </c:if>

@@ -100,6 +100,10 @@
         <servlet-name>managefeedback</servlet-name>
         <servlet-class>controller.managefeedback</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>manageallreservation</servlet-name>
+        <servlet-class>controller.manageallreservation</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>home</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -199,5 +203,9 @@
     <servlet-mapping>
         <servlet-name>managefeedback</servlet-name>
         <url-pattern>/managefeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>manageallreservation</servlet-name>
+        <url-pattern>/manageallreservation</url-pattern>
     </servlet-mapping>
 </web-app>
