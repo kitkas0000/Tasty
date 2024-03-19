@@ -92,6 +92,10 @@ public class feedback extends HttpServlet {
 
                 request.getRequestDispatcher("feedback.jsp").forward(request, response);
 
+            } else if (Integer.parseInt(star) > 5 || Integer.parseInt(star) < 1) {
+                request.setAttribute("mess", "You must enter number from 1 to 5!");
+
+                request.getRequestDispatcher("feedback.jsp").forward(request, response);
             } else {
 
                 DBContext db = new DBContext();

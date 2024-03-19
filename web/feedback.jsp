@@ -91,7 +91,7 @@
                                 </c:if>
 
                                 <c:if test="${sessionScope.acc.isUser == 1}">
-                                    <li class="active">
+                                    <li>
                                         <a href="managereservation">Your Reservation</a>
                                     </li>
                                 </c:if>
